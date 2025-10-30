@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CurrencySelect from "./CurrencySelect";
 
 const ConverterForm = () => {
-  const [amount, setAmount] = useState(100);
+  const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState("USD");
   const [toCurrency, setToCurrency] = useState("EUR");
   const [result, setResult] = useState("");
@@ -14,8 +14,8 @@ const ConverterForm = () => {
   };
 
   const getExchangeRate = async () => {
-    const API_KEY = "e2ced067be-643f94fd53-t29vsu";
-    const API_URL = `https://console.fastforex.io/fetch-one?from=${fromCurrency}&to=${toCurrency}&api_key=${API_KEY}`;
+    const API_KEY = "ebd4cb85b6-24b9324b57-t4u5y6";
+    const API_URL = `https://api.fastforex.io/fetch-one?from=${fromCurrency}&to=${toCurrency}&api_key=${API_KEY}`;
     if (isLoading) return;
     setIsLoading(true);
 
@@ -24,7 +24,7 @@ const ConverterForm = () => {
       if (!response.ok) throw Error("Something went wrong!");
 
       const data = await response.json();
-      const rate = (data.conversion_rate * amount).toFixed(2);
+      const rate = (data.result[toCurrency] * amount).toFixed(2);
       setResult(`${amount} ${fromCurrency} = ${rate} ${toCurrency}`);
     } catch (error) {
       setResult("Something went wrong!");
