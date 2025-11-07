@@ -1,3 +1,5 @@
+import "./CurrencySelect.css";
+
 const currencyCodes = [
   "AED",
   "AFN",

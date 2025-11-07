@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CurrencySelect from "./CurrencySelect";
+import "./ConverterForm.css";
 
 const ConverterForm = () => {
   const [amount, setAmount] = useState(1);
